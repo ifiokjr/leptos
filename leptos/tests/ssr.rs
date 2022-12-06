@@ -1,4 +1,4 @@
-#[cfg(not(any(feature = "csr", feature = "hydrate")))]
+#[cfg(feature = "ssr")]
 #[test]
 fn simple_ssr_test() {
     use leptos_dom::*;
@@ -23,7 +23,7 @@ fn simple_ssr_test() {
     });
 }
 
-#[cfg(not(any(feature = "csr", feature = "hydrate")))]
+#[cfg(feature = "ssr")]
 #[test]
 fn ssr_test_with_components() {
     use leptos_core as leptos;
@@ -61,7 +61,7 @@ fn ssr_test_with_components() {
     });
 }
 
-#[cfg(not(any(feature = "csr", feature = "hydrate")))]
+#[cfg(feature = "ssr")]
 #[test]
 fn test_classes() {
     use leptos_dom::*;

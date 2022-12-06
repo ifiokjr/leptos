@@ -55,7 +55,7 @@ pub use title::*;
 pub struct MetaContext {
     pub(crate) title: TitleContext,
     pub(crate) stylesheets: StylesheetContext,
-    pub(crate) meta_tags: MetaTagsContext
+    pub(crate) meta_tags: MetaTagsContext,
 }
 
 /// Returns the current [MetaContext].
@@ -84,7 +84,7 @@ impl MetaContext {
         Default::default()
     }
 
-    #[cfg(not(any(feature = "csr", feature = "hydrate")))]
+    #[cfg(feature = "ssr")]
     /// Converts the existing metadata tags into HTML that can be injected into the document head.
     ///
     /// This should be called *after* the app’s component tree has been rendered into HTML, so that
@@ -94,7 +94,7 @@ impl MetaContext {
     /// use leptos::*;
     /// use leptos_meta::*;
     ///
-    /// # #[cfg(not(any(feature = "csr", feature = "hydrate")))] {
+    /// # #[cfg(feature = "ssr")] {
     /// run_scope(create_runtime(), |cx| {
     ///   provide_context(cx, MetaContext::new());
     ///

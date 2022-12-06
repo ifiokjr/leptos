@@ -12,7 +12,7 @@ pub fn escape_attr(text: &str) -> Cow<'_, str> {
 }
 
 cfg_if! {
-    if #[cfg(not(any(feature = "csr", feature = "hydrate")))] {
+    if #[cfg(feature = "ssr")] {
         use leptos_reactive::*;
 
         use crate::Element;
@@ -21,7 +21,7 @@ cfg_if! {
         /// Renders a component to a static HTML string.
         ///
         /// ```
-        /// # cfg_if::cfg_if! { if #[cfg(not(any(feature = "csr", feature = "hydrate")))] {
+        /// # cfg_if::cfg_if! { if #[cfg(feature = "ssr")] {
         /// # use leptos_reactive::*; use leptos_dom::*; use leptos_macro::view;
         /// let html = render_to_string(|cx| view! { cx,
         ///   <p>"Hello, world!"</p>
